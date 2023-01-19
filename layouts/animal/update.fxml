@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.6" prefWidth="882.4" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.animal.AnimalController">
+   <children>
+      <AnchorPane prefHeight="592.0" prefWidth="882.0">
+         <children>
+            <Label layoutX="265.0" layoutY="32.0" text="Atualizar dados das princesas">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label layoutX="85.0" layoutY="96.0" text="Selecionar princesa:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="selectPrincess" layoutX="85.0" layoutY="126.0" prefHeight="26.0" prefWidth="713.0" />
+            <TextField fx:id="nameField" layoutX="85.0" layoutY="212.0" prefHeight="26.0" prefWidth="714.0" promptText="Nome da princesa" />
+            <Label layoutX="85.0" layoutY="181.0" text="Nome:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="85.0" layoutY="262.0" text="Dono:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="ownerField" layoutX="85.0" layoutY="292.0" prefHeight="26.0" prefWidth="714.0" promptText="Nome do dono" />
+            <Label layoutX="87.0" layoutY="426.0" text="A princesa está dodói?">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <RadioButton layoutX="85.0" layoutY="462.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="94.0" text="Sim">
+               <toggleGroup>
+                  <ToggleGroup fx:id="sickButtonGroup" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="sickNoButton" layoutX="232.0" layoutY="462.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="54.0" selected="true" text="Não" toggleGroup="$sickButtonGroup" />
+            <Button layoutX="391.0" layoutY="540.0" mnemonicParsing="false" onAction="#update" prefHeight="26.0" prefWidth="101.0" text="Atualizar">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Label layoutX="87.0" layoutY="341.0" text="Idade">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="ageField" layoutX="85.0" layoutY="371.0" prefHeight="26.0" prefWidth="714.0" promptText="Idade da princesa" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

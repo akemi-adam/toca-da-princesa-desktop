@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomepageController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="Usuário">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Perfil" />
+            <MenuItem fx:id="logoutOption" mnemonicParsing="false" onAction="#logout" text="Logout" />
+          </items>
+        </Menu>
+            <Menu mnemonicParsing="false" text="Consultas e Agendamentos">
+              <items>
+                <MenuItem fx:id="schuleOption" mnemonicParsing="false" onAction="#changeSchuleScene" text="Agendar consutla" />
+                  <MenuItem fx:id="historyOption" mnemonicParsing="false" onAction="#changeHistoryScene" text="Histórico" />
+              </items>
+            </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="560.0" prefWidth="882.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Veterinários">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="346.0" prefWidth="805.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" text="Veterinários" textFill="#f777c9">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="499.0" layoutY="14.0" text="Cadastrar novo veterinário" textFill="#f777c9">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="499.0" layoutY="50.0" text="Nome" textFill="#000000ac">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="499.0" layoutY="137.0" text="Especialidade" textFill="#000000ac">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nameVetField" layoutX="499.0" layoutY="80.0" prefHeight="34.0" prefWidth="369.0" promptText="Nome do veterinário" />
+                              <Button fx:id="storeVetButton" layoutX="632.0" layoutY="353.0" mnemonicParsing="false" onAction="#storeVet" prefHeight="26.0" prefWidth="100.0" text="Cadastrar">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <TableView fx:id="vetTable" layoutX="14.0" layoutY="50.0" prefHeight="469.0" prefWidth="466.0">
+                                <columns>
+                                  <TableColumn fx:id="idVetCollumn" prefWidth="27.999998092651367" text="ID" />
+                                  <TableColumn fx:id="nameVetCollumn" minWidth="0.0" prefWidth="132.00000762939453" text="Nome" />
+                                    <TableColumn fx:id="specialtyCollumn" prefWidth="305.6000061035156" text="Especialidade" />
+                                </columns>
+                              </TableView>
+                              <TextArea fx:id="specialtyField" layoutX="499.0" layoutY="169.0" prefHeight="168.0" prefWidth="366.0" promptText="Especialidade do veterinário" />
+                              <TextField fx:id="destroyVetField" layoutX="705.0" layoutY="425.0" prefHeight="26.0" prefWidth="103.0" promptText="ID do veterinário" />
+                              <Label layoutX="512.0" layoutY="423.0" text="Remover veterinário:">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Line endX="264.7999267578125" endY="3.0517578125E-5" layoutX="600.0" layoutY="400.0" startX="-100.0" />
+                              <Button fx:id="destroyVetButton" layoutX="819.0" layoutY="424.0" mnemonicParsing="false" onAction="#destroyVet" prefHeight="26.0" prefWidth="45.0" style="-fx-background-color: #FE1C60;" text="❌" textFill="WHITE">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Button>
+                              <Label layoutX="512.0" layoutY="477.0" text="Editar informações:">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="updateVetButton" layoutX="705.0" layoutY="478.0" mnemonicParsing="false" onAction="#updateVet" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: #1C7FFE;" text="📝" textFill="WHITE">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Princesas">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="dogTable" layoutX="14.0" layoutY="50.0" prefHeight="203.0" prefWidth="466.0">
+                                <columns>
+                                  <TableColumn fx:id="idDogCollumn" prefWidth="27.199979782104492" text="ID" />
+                                  <TableColumn fx:id="nameDogCollumn" prefWidth="123.20001983642578" text="Nome" />
+                                    <TableColumn fx:id="ownerDogCollumn" prefWidth="75.0" text="Dono" />
+                                    <TableColumn fx:id="ageDogCollumn" prefWidth="75.0" text="Idade" />
+                                    <TableColumn fx:id="sickDogCollumn" prefWidth="75.0" text="Dodói" />
+                                    <TableColumn fx:id="pedigreeDogCollumn" prefWidth="88.79999389648435" text="Pedigree" />
+                                </columns>
+                              </TableView>
+                              <Label layoutX="14.0" layoutY="14.0" text="Princesas 🐩" textFill="#f777c9">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="262.0" text="Princesas 🐈‍⬛" textFill="#f777c9">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="catTable" layoutX="14.0" layoutY="298.0" prefHeight="215.0" prefWidth="466.0">
+                                 <columns>
+                                    <TableColumn fx:id="idCatCollumn" prefWidth="27.199979782104492" text="ID" />
+                                    <TableColumn fx:id="nameCatCollumn" prefWidth="123.20001983642578" text="Nome" />
+                                    <TableColumn fx:id="ownerCatCollumn" prefWidth="75.0" text="Dono" />
+                                    <TableColumn fx:id="ageCatCollumn" prefWidth="75.0" text="Idade" />
+                                    <TableColumn fx:id="sickCatCollumn" prefWidth="75.0" text="Dodói" />
+                                    <TableColumn fx:id="blueEyeCatCollumn" prefWidth="88.79999389648435" text="Olhos azuis" />
+                                 </columns>
+                              </TableView>
+                              <Label layoutX="499.0" layoutY="14.0" text="Cadastrar nova princesa" textFill="#f777c9">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="499.0" layoutY="50.0" text="Nome:">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="499.0" layoutY="101.0" text="Dono:">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nameAnimalField" layoutX="570.0" layoutY="53.0" prefHeight="26.0" prefWidth="288.0" promptText="Nome da princesa" />
+                              <TextField fx:id="ownerAnimalField" layoutX="570.0" layoutY="103.0" prefHeight="26.0" prefWidth="288.0" promptText="Nome do dono da princesa" />
+                              <Label layoutX="501.0" layoutY="150.0" text="Idade:">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="ageAnimalField" layoutX="570.0" layoutY="152.0" prefHeight="26.0" prefWidth="288.0" promptText="Idade da princesa" />
+                              <Label layoutX="501.0" layoutY="196.0" text="Está dodói?">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <RadioButton layoutX="669.0" layoutY="203.0" mnemonicParsing="false" text="Sim">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="sickGroup" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="sickNoButton" layoutX="739.0" layoutY="203.0" mnemonicParsing="false" selected="true" text="Não" toggleGroup="$sickGroup">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </RadioButton>
+                              <Label layoutX="501.0" layoutY="250.0" text="Tipo da princesa:">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <RadioButton layoutX="667.0" layoutY="256.0" mnemonicParsing="false" text="Dog">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="princessTypeGroup" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="catTypeButton" layoutX="741.0" layoutY="256.0" mnemonicParsing="false" selected="true" text="Cat" toggleGroup="$princessTypeGroup">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </RadioButton>
+                              <Label layoutX="503.0" layoutY="298.0" text="Olhos azuis?">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <RadioButton layoutX="667.0" layoutY="303.0" mnemonicParsing="false" text="Possui">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="blueEyeGroup" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="blueEyeNoButton" layoutX="739.0" layoutY="303.0" mnemonicParsing="false" selected="true" text="Não possui" toggleGroup="$blueEyeGroup">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </RadioButton>
+                              <Label layoutX="503.0" layoutY="341.0" text="É pedigree?">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <RadioButton layoutX="667.0" layoutY="346.0" mnemonicParsing="false" text="Sim">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="pedigreeGroup" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="pedigreeNoButton" layoutX="742.0" layoutY="346.0" mnemonicParsing="false" selected="true" text="Não" toggleGroup="$pedigreeGroup">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </RadioButton>
+                              <Button fx:id="storeAnimalButton" layoutX="634.0" layoutY="385.0" mnemonicParsing="false" onAction="#storeAnimal" text="Cadastrar">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Button>
+                              <Line endX="254.4000244140625" endY="3.0517578125E-5" layoutX="600.0" layoutY="430.0" startX="-100.0" />
+                              <Label layoutX="500.0" layoutY="441.0" text="Expulsar princesa:">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="destroyAnimalField" layoutX="678.0" layoutY="444.0" prefHeight="26.0" prefWidth="119.0" promptText="ID da ex-princesa" />
+                              <Button fx:id="destroyAnimalButton" layoutX="807.0" layoutY="444.0" mnemonicParsing="false" onAction="#destroyAnimal" prefHeight="26.0" prefWidth="48.0" style="-fx-background-color: #FE1C60;" text="❌" textFill="WHITE" />
+                              <Label layoutX="500.0" layoutY="486.0" text="Editar informações:">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="678.0" layoutY="488.0" mnemonicParsing="false" onAction="#updateAnimal" prefHeight="26.0" prefWidth="178.0" style="-fx-background-color: #1C7FFE;" text="📝" textFill="WHITE" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
