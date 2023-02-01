@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import java.security.NoSuchAlgorithmException;
-
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -21,12 +21,10 @@ import javafx.fxml.Initializable;
 
 import models.Employee;
 
-import exceptions.validation.NullFieldException;
 import exceptions.validation.PasswordNotMatchException;
 import helpers.AuthHelper;
 import helpers.PasswordHelper;
 import helpers.SceneHelper;
-import helpers.ValidationHelper;
 
 public class RegisterController implements Initializable
 {
@@ -69,10 +67,6 @@ public class RegisterController implements Initializable
 
             String[] fields = { nameField.getText(), ageField.getText(), cpfField.getText(), passwordField.getText(), passwordAgainField.getText() };
 
-            for (String field : fields) {
-                ValidationHelper.throwNullFieldException(field);
-            }
-
             if (!passwordField.getText().equals(passwordAgainField.getText()))
                 throw new PasswordNotMatchException("Passwords are not the same");
 
@@ -96,24 +90,19 @@ public class RegisterController implements Initializable
 
             resetPasswords();
 
-        } catch (NullFieldException e) {
-            
-            JOptionPane.showMessageDialog(
-                null, e.getMessage(), "Validation error - " + e.getField() + " field null", JOptionPane.ERROR_MESSAGE
-            );
-
-            resetPasswords();
-
-        } catch (NoSuchAlgorithmException e) {
+        } catch (NoSuchAlgorithmException|IOException e) {
 
             JOptionPane.showMessageDialog(
                 null, "An internal error has occurred", "Error", JOptionPane.ERROR_MESSAGE
             );
 
             resetPasswords();
+        
+        } catch (SQLException e) {
+        
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Validation error", JOptionPane.ERROR_MESSAGE);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            resetPasswords();
         }
     }
 
