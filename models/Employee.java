@@ -5,8 +5,6 @@ import java.sql.SQLException;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 import enums.Table;
 
 public class Employee extends Model
@@ -118,13 +116,9 @@ public class Employee extends Model
      * @param collumns
      * @param values
      */
-    public static void create(String collumns, String values)
+    public static void create(String collumns, String values) throws SQLException
     {
-        try {
-            insert(Table.EMPLOYEE, collumns, values);
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        insert(Table.EMPLOYEE, collumns, values);
     }
 
     /**
